@@ -1,0 +1,349 @@
+﻿<%@ Control Language="VB" ClassName="product" %>
+
+<%@ Register Src="product_banner.ascx" TagName="product_banner" TagPrefix="uc1" %>
+
+<script runat="server">
+
+    Dim allprice, isglasses, material, range As String
+    
+    Dim _page As Integer = 0
+    
+    Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs)
+        
+        
+                         
+        If Page.IsPostBack = False Then
+            If Me.Request("brand") <> "" Then
+                
+                
+                If Me.Request("is") = "m" Then
+                    isglasses = "'Mắt kính'"
+                End If
+                If Me.Request("is") = "g" Then
+                    isglasses = "'Gọng kính'"
+                End If
+                
+                
+                If Me.Request("material") = "" Then
+                    material = ""
+                Else
+                    material = " and artist ='" & Me.Request("material") & "'"
+                End If
+                
+                               
+                
+                If Me.Request("range") = "" Then
+                    
+                    range = ""
+                Else
+                    range = " and pricerange =" & Me.Request("range")
+                End If
+                
+                
+                Me.AccessDataSource1.SelectCommand = "SELECT * FROM [product] where  brand like '" & Me.Request("brand").Replace("%20", " ") & "' and isglasses = " & isglasses & material & range & "  order by productname "
+               
+                Me.ListView3.DataBind()
+             
+                Me.DropDownList2.Visible = False
+            End If
+                              
+        
+        
+            If Me.Request("style") <> "" Then
+                              
+                allprice = 0
+                Me.DropDownList2.Visible = True
+                Me.AccessDataSource1.SelectCommand = "SELECT * FROM [product] where  style =" & Me.Request("style") & "  order by productname "
+               
+                Me.ListView3.DataBind()
+            
+            
+            End If
+        
+       
+        
+        
+            If Me.Request("sp_doc") = "true" Then
+          
+                If Me.Request("is") = "m" Then
+                    isglasses = "'Mắt kính'"
+                End If
+                If Me.Request("is") = "g" Then
+                    isglasses = "'Gọng kính'"
+                End If
+                
+                Me.AccessDataSource1.SelectCommand = "SELECT * FROM [product] where promocheck= true and isglasses = " & isglasses & "' order by productname "
+                Me.ListView3.DataBind()
+                
+                Me.chb_nam.Visible = True
+                Me.chb_nu.Visible = True
+                lb_sex.Visible = True
+                    
+                
+            End If
+        End If
+        
+        If Me.Request("pg") <> 0 Then
+                
+            Dim index As Integer = Me.Request("pg")
+            
+            index = (index - 1) * CType(Me.ListView3.FindControl("DataPager1"), DataPager).PageSize
+        
+            CType(Me.ListView3.FindControl("DataPager1"), DataPager).SetPageProperties(index, CType(Me.ListView3.FindControl("DataPager1"), DataPager).MaximumRows, True)
+            
+        End If
+        
+    End Sub
+
+    Sub filterProduct()
+        
+       
+        If Me.Request("is") = "m" Then
+            isglasses = "'Mắt kính'"
+        End If
+        If Me.Request("is") = "g" Then
+            isglasses = "'Gọng kính'"
+        End If
+        
+        If Me.Request("material") = "" Then
+            material = ""
+        Else
+            material = " and artist ='" & Me.Request("material") & "'"
+        End If
+     
+        If Me.DropDownList2.SelectedValue = 0 Then
+            allprice = " "
+        Else
+            
+            allprice = " and pricerange =" & Me.DropDownList2.SelectedValue
+        End If
+        
+        
+        Dim az_new As String = "productname"
+        
+        If Me.rdb_a2z.Checked Then
+            az_new = "productname"
+        Else
+            az_new = "id desc"
+        End If
+        
+        If Me.Request("sp_doc") <> "true" Then
+        
+            If Me.chb_nu.Checked And Not Me.chb_nam.Checked Then
+            
+                If Me.Request("style") <> "" Then
+                    Me.AccessDataSource1.SelectCommand = "SELECT * FROM [product] where  style =" & Me.Request("style") & allprice & " and (sex like 'Nữ' or sex like 'Cả hai') order by " & az_new
+                    Me.ListView3.DataBind()
+                Else
+                    Me.AccessDataSource1.SelectCommand = "SELECT * FROM [product] where (sex like 'Nữ' and brand like '" & Me.Request("brand") & "' and isglasses = " & isglasses & material & range & ") or (sex like 'Cả hai' and brand like '" & Me.Request("brand") & "' and isglasses = " & isglasses & material & range & ")  order by " & az_new
+                    Me.ListView3.DataBind()
+                End If
+                       
+        
+            ElseIf Not Me.chb_nu.Checked And Me.chb_nam.Checked Then
+            
+                If Me.Request("style") <> "" Then
+                    Me.AccessDataSource1.SelectCommand = "SELECT * FROM [product] where  style =" & Me.Request("style") & allprice & " and (sex like 'Nam' or sex like 'Cả hai')  order by " & az_new
+                    Me.ListView3.DataBind()
+                Else
+                    Me.AccessDataSource1.SelectCommand = "SELECT * FROM [product] where (sex like 'Nam' and brand like '" & Me.Request("brand") & "' and isglasses = " & isglasses & material & range & ") or (sex like 'Cả hai' and brand like '" & Me.Request("brand") & "' and isglasses = " & isglasses & material & range & ")  order by " & az_new
+                    Me.ListView3.DataBind()
+                End If
+            
+            
+            
+            ElseIf Me.chb_nu.Checked And Me.chb_nam.Checked Then
+           
+                If Me.Request("style") <> "" Then
+                    Me.AccessDataSource1.SelectCommand = "SELECT * FROM [product] where  style =" & Me.Request("style") & allprice & "  order by " & az_new
+                    Me.ListView3.DataBind()
+                Else
+                    Me.AccessDataSource1.SelectCommand = "SELECT * FROM [product] where  brand like '" & Me.Request("brand") & "' and isglasses = " & isglasses & material & range & "   order by " & az_new
+                    Me.ListView3.DataBind()
+                End If
+            
+            Else
+                If Me.Request("style") <> "" Then
+                    Me.AccessDataSource1.SelectCommand = "SELECT * FROM [product] where  style =" & Me.Request("style") & allprice & "  order by " & az_new
+                    Me.ListView3.DataBind()
+                Else
+                    Me.AccessDataSource1.SelectCommand = "SELECT * FROM [product] where  brand like '" & Me.Request("brand") & "' and isglasses = " & isglasses & material & range & "   order by " & az_new
+                    Me.ListView3.DataBind()
+                End If
+            End If
+        
+        
+        Else
+                
+            Me.AccessDataSource1.SelectCommand = "SELECT * FROM [product] where promocheck= true and isglasses = " & isglasses & allprice & "   order by " & az_new
+            Me.ListView3.DataBind()
+                         
+                
+        End If
+        
+             
+        
+    End Sub
+
+    Protected Sub ListView3_PagePropertiesChanging(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.PagePropertiesChangingEventArgs)
+       
+        filterProduct()
+        
+        Dim CurrentPage As Integer = (e.StartRowIndex / e.MaximumRows) + 1
+               
+        _page = CurrentPage
+           
+       
+        
+    End Sub
+    
+    Public Function formatPrice(ByVal price As String) As String
+        If price = "00" Or price = "0.0" Or price = "0" Then
+            Return "<span class='price' style='font-size:16px' >Call để có giá tốt</span>"
+        Else
+            Return "<span class='price' >" & price & " <small>VND</small></span>"
+        End If
+    End Function
+    
+  
+    
+    
+    Protected Sub chb_nam_CheckedChanged(ByVal sender As Object, ByVal e As System.EventArgs)
+        
+        filterProduct()
+        
+       
+    End Sub
+    
+    Protected Sub chb_nu_CheckedChanged(ByVal sender As Object, ByVal e As System.EventArgs)
+        
+        filterProduct()
+        
+    End Sub
+
+    Protected Sub rdb_a2z_CheckedChanged(ByVal sender As Object, ByVal e As System.EventArgs)
+        filterProduct()
+    End Sub
+
+   
+  
+    Protected Sub rdb_new_CheckedChanged(ByVal sender As Object, ByVal e As System.EventArgs)
+        filterProduct()
+    End Sub
+    
+ 
+    
+    Protected Sub DropDownList2_SelectedIndexChanged(sender As Object, e As EventArgs)
+        filterProduct()
+    End Sub
+</script>
+
+<asp:UpdatePanel ID="UpdatePanel2" runat="server">
+    <ContentTemplate>
+            
+
+         <div class="row">
+
+            <div class="span9 product-banner">
+                <uc1:product_banner ID="product_banner1" runat="server" />
+            </div>
+        </div>
+ 
+  
+  <div class="row">
+            <div class="span9 product-banner form-inline">
+                <asp:Label ID="lb_sex" runat="server" Text="Giới tính: "></asp:Label>
+
+                <asp:CheckBox ID="chb_nam" runat="server" Text="&nbsp;Nam"
+                    OnCheckedChanged="chb_nam_CheckedChanged" AutoPostBack="True" />
+                <asp:CheckBox ID="chb_nu" runat="server" Text="&nbsp;Nữ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
+                    OnCheckedChanged="chb_nu_CheckedChanged" AutoPostBack="True" />
+
+                <asp:Label ID="Label2" runat="server" Text="Theo thứ tự:"></asp:Label>
+                <asp:RadioButton ID="rdb_a2z" runat="server" AutoPostBack="True" Checked="True"
+                    GroupName="abc" OnCheckedChanged="rdb_a2z_CheckedChanged" Text="&nbsp;A-Z" />
+                &nbsp;
+               <asp:RadioButton ID="rdb_new" runat="server" GroupName="abc"
+                   Text="&nbsp;Mới nhất&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" OnCheckedChanged="rdb_new_CheckedChanged"
+                   AutoPostBack="True" />
+
+                <asp:DropDownList ID="DropDownList2" runat="server" AutoPostBack="true" Visible="true" Style="width: 200px" OnSelectedIndexChanged="DropDownList2_SelectedIndexChanged">
+                    <asp:ListItem Selected="True" Value="0">Chọn mức giá</asp:ListItem>
+                    <asp:ListItem Value="41">Trên 5 triệu</asp:ListItem>
+                    <asp:ListItem Value="42">Từ 5 triệu - 2 triệu</asp:ListItem>
+                    <asp:ListItem Value="43">Từ 2 triệu - 1 triệu</asp:ListItem>
+                    <asp:ListItem Value="44">Dưới 1 triệu</asp:ListItem>
+                </asp:DropDownList>
+
+            </div>
+         </div>   
+<asp:AccessDataSource ID="AccessDataSource1" runat="server" 
+    DataFile="~/App_Data/data.mdb"  >
+</asp:AccessDataSource>
+
+             <asp:ListView ID="ListView3" runat="server" DataKeyNames="id" 
+            DataSourceID="AccessDataSource1" 
+            onpagepropertieschanging="ListView3_PagePropertiesChanging" >
+           
+                                       
+            <EmptyDataTemplate>
+                
+            </EmptyDataTemplate>
+              
+            
+            <ItemTemplate>
+                      
+                        <div class="span3 box-product">
+                    	 <a href="<%# "product_detail.aspx?id=" & Eval("id") & "&type=" & Eval("type") & "&price=" & Server.UrlEncode(Eval("price")) & "&pr=" & Eval("pricerange") & "&pn=" & Eval("productname") & "&cl=" & Eval("color") & "&st=" & Eval("style")  & "&brand=" & Server.UrlEncode(Me.Request("brand")) & "&pg=" & _page & "&is=" & Me.Request("is") &  "&material=" & Me.Request("material") %>" >
+                            
+                             <h5><%# Eval("productname") %> <%# eval("color") %></h5>
+                             <asp:Image ID="Image1" runat="server" 
+                            ImageUrl='<%# "../images/products/" &  Eval("image") %>' BorderWidth=0 />
+                           
+                         <div class="bg-product">
+                          
+                          <h4><%# formatPrice(Eval("price"))  %></h4>
+                          
+                   		<div class="product-detail">Chi tiết <i class="icon-chevron-right icon-white"></i></div><br/><br/> </a>
+						</div>
+                    	</div>
+                        
+          </ItemTemplate>
+            <LayoutTemplate>
+
+           
+
+                <div ID="itemPlaceholderContainer" runat="server" style="">
+                    <span runat="server" id="itemPlaceholder" />
+                </div>
+                 <div class="clearfix"></div><br/>
+                <div class="paging">Trang 
+                   <asp:DataPager ID="DataPager1" runat="server" PageSize="9">
+                        <Fields>
+
+                            <asp:NumericPagerField />
+                            
+                        </Fields>
+                    </asp:DataPager>
+
+
+                </div>
+
+                
+      
+            </LayoutTemplate>            
+                      
+            
+        </asp:ListView>
+
+  
+              
+    </ContentTemplate>
+</asp:UpdatePanel>
+<asp:UpdateProgress ID="UpdateProgress2" runat="server">
+    <ProgressTemplate>
+        loading...</ProgressTemplate></asp:UpdateProgress>
+        
+      
+  
+     

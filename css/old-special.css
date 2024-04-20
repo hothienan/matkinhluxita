@@ -1,0 +1,526 @@
+.table th, .table td{
+	
+	border: none;
+	border-bottom: 1px solid #DDD;
+
+}
+
+#top-menu ul, footer ul, .news ul{
+	
+	list-style:none
+}
+
+#top-menu li, footer li{
+	
+	float:left;
+	padding:0 10px;	
+	border-right: 1px dotted #ccc;
+	
+	display:block;
+}
+
+.form-search .input-append .btn
+{
+    height:30px
+    }
+
+hr{
+	
+	margin: 10px 0;
+}
+
+.news ul{
+	
+	list-style:none;
+	margin: 0px;
+}
+
+.news li{
+	padding:5px;
+	border-bottom: 1px dotted #ccc;
+	display:block;
+		 
+}
+
+
+
+.news  .active {
+	background-color:#8EB317 !important;
+	color:#FFF;
+
+}
+
+.news  .active  a{
+	background-color:#8EB317 !important;
+	color:#FFF;
+
+}
+
+
+
+ a:hover{
+	color:#8EB317;
+	text-decoration:none;
+}
+
+ a{
+	color:#333;
+	display:block;
+}
+
+.remove-dash{
+	
+	
+	border:none !important; 
+}
+
+.text-category
+{
+	
+	font-size:24px;	
+	font-weight:bold;
+	
+		
+	}
+.text-category li
+{	
+	line-height:30px;
+	
+}
+
+
+body{
+	
+	margin: 0 auto;
+	background:url(../images/graphics/dotted-pattern.gif);
+	font-family:Arial, Helvetica, sans-serif;
+	
+	}
+	
+	.product-banner
+	{
+	   padding: 10px 0 0 0;
+	   
+	   }
+	
+	.product-banner img
+	{   width:690px;
+	   }
+	
+#produst-list .span9{
+	
+}
+
+#produst-list .span3{
+	margin:10px 10px 0px 0px;	
+
+}
+
+#produst-list .span3 .product-side-content{
+	border: 5px #eee solid;
+	margin: 0px 0 10px 20px;
+	padding: 5px;
+
+}
+
+#produst-list .product-banner-slide img{
+	width: 600px;
+	height: 300px;
+
+}
+
+#produst-list .product-banner-slide{
+	width: 600px;
+	margin: 10px 0 0;
+	height: 300px;
+	border: 1px solid #bbb;
+	
+
+}
+
+#produst-list .product-banner-slide .carousel-control
+{
+   top: 295px;
+   }
+
+.bg-product{
+	background-color:#333;
+	padding:0px;
+	height:110px;
+	
+
+}
+
+.title-left{
+	font-weight: bold;
+	float:left;	
+}
+
+.title-right{
+
+	float:right;	
+}
+
+.menu-hover{
+	
+	background-color:#000;
+	width: 900px;
+	border: 8px solid #fff;
+	min-height:250px;
+	box-shadow: 3px 3px 5px #000;
+	position:absolute;
+	top:100px;
+	padding:10px 5px 10px 20px ;
+	display:none;
+	color: #FFF;
+	left:20px;
+	
+	
+	}
+	
+	  .menu-hover .span3
+       {
+          width:180px;
+          
+          }
+          
+          
+.arrow{
+	background:  url(../images/graphics/arrow.png) no-repeat;
+	width:	20px;
+	height: 14px;
+	position:absolute;
+	top:-10px;
+	left: 450px;
+}
+	
+
+.menu-hover ul{
+	list-style-type:none;
+	margin:0px;
+
+}
+
+
+.menu-hover li{
+	
+	padding: 2px 0;	
+
+}
+
+
+.menu-hover a{
+	
+	color:#999;	
+	text-transform:uppercase;
+	font-size:12px;
+
+}
+
+.menu-hover a:hover{
+	
+	color:#8EB317;	
+
+}
+
+
+.wrapper{
+	margin:0 auto;	
+	background-color:#FFF;
+	width: 980px;
+	min-height:700px;
+	padding-bottom:10px;
+	position:relative;
+}
+
+.main-banner{
+	
+	width:624px;
+	margin-left:20px;
+	margin-bottom: 5px;
+	float:left;
+	
+}
+
+
+.right-banner{
+	
+	width:305px;
+	margin-left:5px;
+	margin-bottom: 5px;
+	float:left;
+	
+}
+
+
+.bottom-banner{
+	
+	width:310px;
+	margin-left:5px;
+	margin-bottom: 5px;
+	float:left;
+	
+}
+
+
+.align-bottom-banner{
+	margin-left:35px;
+	
+}
+
+.box-news p{
+	font-size:12px;
+	height:58px;
+	overflow:hidden;
+	
+}
+
+
+.box-news h6{
+	margin:0;	
+	
+}
+
+.carousel{
+	
+	margin-bottom:0px;
+}
+
+.carousel-control{
+	bottom: 0%;
+	top:auto;
+	height:25px;
+	width: 25px;
+	font-size:20px;
+	border: none;
+	border-radius: 0;
+	line-height: 22px;
+	left:0px;
+	
+}
+
+.carousel-caption h4{
+	
+	font-size:14px;}
+
+.carousel-caption{
+	
+	padding: 5px 60px 0px
+	}
+
+.carousel-control.right{
+	left:30px;
+	}
+.line-black{
+	
+	height:7px;
+	background-color:#000;
+	
+}
+
+.right-line-black{
+	
+	border-right: 6px solid #000;
+	width: 934px;
+
+	
+}
+
+	
+	.line-large-black{
+	
+	height:36px;
+	line-height:36px;
+	background-color:#000;
+	margin-bottom: 5px;	
+	padding: 0 10px;
+	color:#FFF;	
+
+	}
+	
+	.line-large-black h6{
+			font-size:12px;
+			font-weight:normal;
+		}
+		
+.product-layout
+{
+   height: 130px;
+    border-top: 1px dotted #EEE;
+    padding: 10px 0px; 
+}
+
+.img-polaroid 
+{
+    border-width:1px !important;
+    }
+    
+    
+    .brand 
+    {width:495px;
+        }
+   .brand li
+   {
+      float: left;
+      width: 165px;
+      }
+      
+      .box-page-content
+      {
+          width: 760px;
+          padding:10px 0 10px 20px;
+          }
+      
+          
+      
+      .paging{
+        text-align:center; 
+        font-weight: bold;
+       
+       }
+      
+      .paging a
+      {
+          display:inline;
+          padding: 2px 6px;
+          border: 1px solid #ccc;
+         
+          }
+          
+          #produst-same-list .span3
+          {
+              	margin: 0px 0 10px 10px;
+              }
+              
+  .famous-artist{
+	border: 5px #eee solid;
+	margin: 10px 0 10px -10px;
+	padding: 0px;
+
+}
+
+.famous-artist img
+{
+   width:318px
+   }
+
+
+.box-product{
+	
+	border: 1px solid #ccc;
+	background-color:#eee;
+	
+	
+	
+}
+
+	
+.box-product h5{
+	color:#999;
+	font-size:12px;
+	margin-left:10px;
+	height: 35px;
+	
+
+
+}
+
+
+.box-product h4{
+	color:#999;
+	font-size:14px;
+	margin-left:10px;
+	font-weight: normal;
+
+
+}
+
+.box-product a{
+	background-color:#8EB317 !important;
+	color:#FFF;
+	padding: 2px 0px 2px 30px;
+    width: 90px;
+    font-weight: bold;
+    text-transform: uppercase;
+
+}
+
+
+.box-order{
+	
+	width:320px !important;
+	height: 140px;
+	background-color:#333;
+	margin: -5px 0 0 -11px;
+	padding: 5px;
+	
+	
+}
+	
+.box-order .price
+{
+    color: red;
+    font-size: 24px;   
+  font-weight: bold;
+    
+    }
+    
+    .box-order .price-mall
+{
+    color: white;
+    font-size: 24px;  
+    font-weight: bold;
+      
+ 
+    
+    }
+ 
+ input[type="checkbox"]
+ {
+     margin-top:0px;
+    }
+    
+     .box-product .price
+{
+    color: red;
+    font-size: 24px;  
+    font-weight: bold;
+      
+ 
+    
+    }
+    
+    .box-product img
+    {
+        width:220px;
+        height:110px;
+       
+       }
+    
+ .box-order   a{
+	background-color:#8EB317 !important;
+	color:#FFF;
+	padding: 6px 0px 6px 8px;
+	width: 310px;
+	font-size: 20px;
+
+}
+
+
+.box-order h5{
+	color:#8EB317;
+	font-size:16px;
+	margin-left:10px;
+	
+
+}
+
+
+.box-order h4{
+	color:#999;
+	font-size:14px;
+	margin-left:10px;
+	font-weight: normal;
+
+
+}

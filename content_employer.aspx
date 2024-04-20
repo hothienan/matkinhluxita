@@ -1,0 +1,27 @@
+﻿<%@ Page Title="" Language="VB" MasterPageFile="MasterPage.master" %>
+<%@ Register src="user_control/content_employer.ascx" tagname="content" tagprefix="uc1" %>
+
+
+<script runat="server">
+
+    
+
+
+
+
+
+
+
+
+
+</script>
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+<div class="fix_content03">
+
+<uc1:content ID="content2" runat="server" />
+ </div>
+    <script type="text/javascript">
+        $("#mn6").addClass("active");          
+    </script>
+</asp:Content>
+

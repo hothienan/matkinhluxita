@@ -1,0 +1,102 @@
+﻿<%@ Control Language="VB" ClassName="product_similar" %>
+
+
+
+<script runat="server">
+
+
+    Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs)
+        
+        If Me.Request("id") <> "" Then
+    
+            Me.AccessDataSource1.SelectCommand = "SELECT * FROM [relation_product] where [relationId] = " & Me.Request("id") & "  ORDER BY id "
+            Me.ListView3.DataBind()
+           
+            
+        End If
+                  
+    End Sub
+    
+    Public Function formatPrice(ByVal price As String) As String
+        If price = "00" Then
+            Return "<span class='price' style='font-size:16px' >Call để có giá tốt</span>"
+        Else
+            Return "<span class='price' >" & price & " <small>VND</small></span>"
+        End If
+    End Function
+
+</script>
+
+<asp:UpdatePanel ID="UpdatePanel200" runat="server">
+    <ContentTemplate>                         
+
+<asp:AccessDataSource ID="AccessDataSource1" runat="server" 
+    DataFile="~/App_Data/data.mdb"  >
+</asp:AccessDataSource>
+
+             <asp:ListView ID="ListView3" runat="server" DataKeyNames="id" 
+            DataSourceID="AccessDataSource1"  >          
+                                       
+            <EmptyDataTemplate>
+                <span>Không có</span>
+            </EmptyDataTemplate>                     
+              
+            
+            <ItemTemplate>                    
+                      
+                        <div class="span3 box-product">
+                    	 
+                            <asp:Image ID="Image1" runat="server" 
+                            ImageUrl='<%# "../images/products/" &  Eval("image") %>' BorderWidth=0 />
+                            
+                         <div class="bg-product">
+                          <h5><%# Eval("productname") %> <%# Eval("short_text")%></h5>
+                          <h4><span >Giá: </span><%# formatPrice(Eval("price"))  %></h4>
+                          
+                   		<a href="<%# "product_detail.aspx?id=" & Eval("productId") & "&type=" & request("type") & "&price=" & request("price") & "&pr=" & request("pr")  & "&pn=" & request("pn") & "&cl=" & request("cl") %>" class="product-detail">Chi tiết <i class="icon-chevron-right icon-white"></i></a><br/><br/>
+						</div>
+                    	</div>
+
+
+                        
+          </ItemTemplate>
+            <LayoutTemplate>
+
+           
+
+                <div ID="itemPlaceholderContainer" runat="server" style="">
+                    <span runat="server" id="itemPlaceholder" />
+                </div>
+                 <div class="clearfix"></div><br/>
+                <div class="paging">Trang 
+                   <asp:DataPager ID="DataPager1" runat="server" PageSize="4">
+                        <Fields>
+
+                            <asp:NumericPagerField />
+                            
+                        </Fields>
+                    </asp:DataPager>
+
+
+                </div>
+
+                
+      
+            </LayoutTemplate>            
+                      
+                     
+                      
+            
+        </asp:ListView>
+
+
+              
+    </ContentTemplate>
+</asp:UpdatePanel>
+<asp:UpdateProgress ID="UpdateProgress200" runat="server">
+    <ProgressTemplate>
+        loading...</ProgressTemplate></asp:UpdateProgress>
+        
+      
+  
+     

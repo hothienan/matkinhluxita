@@ -1,0 +1,179 @@
+﻿<%@ Master Language="VB" %>
+    <%@ Register src="user_control/counter_uc.ascx" tagname="counter_uc" tagprefix="uc20" %>
+       
+<%@ Register src="user_control/product_menu.ascx" tagname="product_menu" tagprefix="uc1" %>
+
+<%@ Register src="user_control/product_menu2.ascx" tagname="product_menu2" tagprefix="uc2" %>
+
+   
+<%@ Register src="user_control/search.ascx" tagname="search" tagprefix="uc2" %>
+
+   
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+
+<title>Welcome to 1001eyewear</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <form id="form1" runat="server">
+
+ <asp:ContentPlaceHolder id="head" runat="server">
+
+    </asp:ContentPlaceHolder>
+
+<!-- Le styles    -->
+<!-- Placed at the end of the document so the pages load faster -->
+<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/ui-lightness/jquery-ui.css" type="text/css" media="all" />
+<link rel="stylesheet" type="text/css" href="<%= ResolveUrl("css/bootstrap.css")%>" />
+<link rel="stylesheet" type="text/css" href="<%= ResolveUrl("css/special.css")%>" />
+<link rel="shortcut icon" href="<%= ResolveUrl("images/graphics/1001.png")%>" />
+
+	<!-- JAVASCRIPT GOES HERE -->		
+	
+
+<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+<!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+<!-- Le fav and touch icons  -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js" type="text/javascript"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js" type="text/javascript"></script>
+
+<script type='text/javascript' src='<%= ResolveUrl("js/jquery.js")%>'></script>
+<script type='text/javascript' src='<%= ResolveUrl("js/bootstrap.min.js")%>'></script>
+    
+
+</head>
+<body>
+
+<div id="fb-root"></div>
+<script>    (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/vi_VN/all.js#xfbml=1";
+        fjs.parentNode.insertBefore(js, fjs);
+    } (document, 'script', 'facebook-jssdk'));</script>
+
+
+      <asp:ScriptManager ID="ScriptManager1" runat="server"> </asp:ScriptManager>
+      <uc20:counter_uc ID="counter_uc1" runat="server" Visible="false" />
+
+
+    
+<div class="wrapper"> <br/>
+  <div class="container">
+    <div class="row">
+      <div class="span3" style="margin-top:8px; margin-bottom:8px"><a href="<%= ResolveUrl("default.aspx")%>"><img src="<%= ResolveUrl("images/graphics/logo-1001.png")%>" alt="logo" alt="1001 store plogo"  width="180" height="75" /></a> </div>
+      <div class="span9 form-inline "  id="top-menu">
+        <ul  class="pull-right">
+          <li><a href="<%= ResolveUrl("default.aspx")%>">Trang Chủ</a></li>
+          <li><a href="<%= ResolveUrl("about.aspx")%>">Giới Thiệu</a></li>
+          <li><a href="<%= ResolveUrl("payment.aspx")%>">Thanh Toán</a></li>
+          <li><a href="<%= ResolveUrl("news.aspx")%>">Tin Tức</a></li>
+          <li class="remove-dash"><a href="<%= ResolveUrl("contact.aspx")%>">Liên Hệ</a></li>
+        </ul>
+        <br/>
+        <br/>
+        <ul  class="pull-right text-category">
+          <li id="menu1"><a href="#">Kính Mát</a></li>
+          <li id="menu2"><a href="#">Gọng Kính</a></li>
+          <li class="remove-dash">
+            
+            <div class="form-search">
+              <div class="input-append">
+                
+
+
+                  <uc2:search ID="search1" runat="server" />
+                
+
+
+              </div>
+            </div>
+
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!-- Main hero unit for a primary marketing message or call to action -->
+
+  <div class="container " >
+    <div class="line-black"></div>
+  </div>
+  
+    <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server" >
+        
+              
+        
+        </asp:ContentPlaceHolder>
+
+  <div class="container">
+    <!-- Example row of columns -->
+    <hr>
+    <footer>
+      <ul>
+        <li><span style="color:Red; font-weight:bold">Hotline</span></li><li>0918 888 515</li>
+        <li>0988 186 689</li>
+             
+        <li><a href="ymsgr:sendIM?matkinh1001">
+        <img border="0"  src="http://opi.yahoo.com/online?u=matkinh1001&m=g&t=1" alt="Yahoo chat" title="matkinh1001">
+        </a></li>
+        <li><a href="ymsgr:sendIM?raybanxachtay">
+        <img border="0"  src="http://opi.yahoo.com/online?u=raybanxachtay&m=g&t=1" alt="Yahoo chat" title="raybanxachtay">
+        </a></li>
+      </ul>
+      <br/>
+      <ul>
+       <li>322/2 Bis Trần Hưng Đạo, Q1, Tp.Hồ Chí Minh</li>       
+        <li class="remove-dash">&copy; Copyright 2012 [1001 store] , All Rights Reserved</li>        
+      </ul>
+    </footer>
+  </div>
+
+  <uc1:product_menu ID="product_menu1" runat="server" />
+  <uc2:product_menu2 ID="product_menu2" runat="server" />
+
+</div>
+<!-- addon -->
+<!-- /container -->
+<!-- Le javascript
+    ================================================== -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js" type="text/javascript"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js" type="text/javascript"></script>
+<script src="js/bootstrap.min.js"></script>
+<script>
+
+    $(".menu-hover").hover(
+
+	function () { }, function () { $("#menu-show1, #menu-show2").hide(); }
+
+);
+
+
+    $("#menu1").hover(
+
+	function () { $("#menu-show2").fadeOut(300); $("#menu-show1").fadeIn(300); $(".arrow").css("left", "450px"); $("#menu-show2").hide(); }
+);
+
+    $("#menu2").hover(
+
+	function () { $("#menu-show1").fadeOut(300); $("#menu-show2").fadeIn(300); $(".arrow").css("left", "600px"); $("#menu-show1").hide(); }
+);
+
+    $('#myTab a').click(function (e) {
+        e.preventDefault();
+        $(this).tab('show');
+    })
+
+    
+</script>
+
+
+
+    </form>
+</body>
+</html>

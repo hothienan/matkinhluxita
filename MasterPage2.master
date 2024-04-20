@@ -1,0 +1,222 @@
+﻿<%@ Master Language="VB" %>
+    <%@ Register src="user_control/counter_uc.ascx" tagname="counter_uc" tagprefix="uc20" %>
+       
+<%@ Register src="user_control/product_menu.ascx" tagname="product_menu" tagprefix="uc1" %>
+
+<%@ Register src="user_control/product_menu2.ascx" tagname="product_menu2" tagprefix="uc2" %>
+
+   
+<%@ Register src="user_control/search.ascx" tagname="search" tagprefix="uc2" %>
+
+<%@ Register src="user_control/product_detail_meta.ascx" tagname="product_detail_meta" tagprefix="uc600" %>
+
+   
+<%@ Register src="user_control/online.ascx" tagname="online" tagprefix="uc3" %>
+
+   
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head >
+    <form id="form1" runat="server">
+
+
+       <uc600:product_detail_meta ID="product_detail_meta2" runat="server" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<!-- Le styles    -->
+<!-- Placed at the end of the document so the pages load faster -->
+<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/ui-lightness/jquery-ui.css" type="text/css" media="all" />
+<link rel="stylesheet" type="text/css" href="<%= ResolveUrl("css/bootstrap.css")%>" />
+<link rel="stylesheet" type="text/css" href="<%= ResolveUrl("css/special.css")%>" />
+        
+<link rel="stylesheet" type="text/css" href="<%= ResolveUrl("css/ font-awesome.min.css")%>" />   
+
+<link rel="shortcut icon" href="images/graphics/1001.png" />
+
+	<!-- JAVASCRIPT GOES HERE -->		
+	
+
+<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+<!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+<!-- Le fav and touch icons  -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js" type="text/javascript"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js" type="text/javascript"></script>
+
+<script type='text/javascript' src='<%= ResolveUrl("js/jquery.js")%>'></script>
+<script type='text/javascript' src='<%= ResolveUrl("js/special.js")%>'></script>
+<script type='text/javascript' src='<%= ResolveUrl("js/bootstrap.min.js")%>'></script>
+    
+
+</head>
+<body>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-71155831-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+<div id="fb-root"></div>
+<script>    (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/vi_VN/all.js#xfbml=1";
+        fjs.parentNode.insertBefore(js, fjs);
+    } (document, 'script', 'facebook-jssdk'));</script>
+
+
+      <asp:ScriptManager ID="ScriptManager1" runat="server"> </asp:ScriptManager>
+      <uc20:counter_uc ID="counter_uc1" runat="server" Visible="false" />
+
+
+    
+<div class="wrapper"> <br/>
+  <div class="container">
+    <div class="row">
+      <div class="span3" style="margin-top:8px; margin-bottom:8px"><a href="<%= ResolveUrl("default.aspx")%>"><img src="<%= ResolveUrl("images/graphics/logo-1001.png")%>" alt="logo" alt="1001 store plogo"  width="180" height="75" /></a> </div>
+      <div class="span9 form-inline "  id="top-menu" style="margin-top:9px;">
+         <div style="position:absolute; top:5px; right: 18px"><img src="<%= ResolveUrl("images/graphics/vietnam_flag.jpg")%>" /> <img src="<%= ResolveUrl("images/graphics/english_flag.jpg")%>" /></div>
+        <ul  class="pull-right" style="margin-right: -10px; margin-top: 6px;">
+          <li><a href="<%= ResolveUrl("default.aspx")%>">Trang Chủ</a></li>
+          <li><a href="<%= ResolveUrl("about.aspx")%>">Giới Thiệu</a></li>
+          <li><a href="<%= ResolveUrl("payment.aspx")%>">Thanh Toán</a></li>
+          <li><a href="<%= ResolveUrl("news.aspx")%>">Tin Tức</a></li>
+          <li class="remove-dash"><a href="<%= ResolveUrl("contact.aspx")%>">Liên Hệ</a></li>
+        </ul>
+        <br/>
+        <br/>
+        <ul  class="pull-right text-category" style="margin-right: -10px;">
+          <li id="menu1"><a href="#">Kính Mát</a></li>
+          <li id="menu2"><a href="#">Gọng Kính</a></li>
+          <li class="remove-dash">
+            
+            <div class="form-search">
+              <div class="input-append">
+                
+
+
+                  <uc2:search ID="search1" runat="server" />
+                
+
+
+              </div>
+            </div>
+
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!-- Main hero unit for a primary marketing message or call to action -->
+
+  <div class="container " >
+    <div class="line-black"></div>
+  </div>
+  
+    <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server" >
+        
+              
+        
+        </asp:ContentPlaceHolder>
+
+  <div class="container">
+  <hr/>
+    <footer>
+    <div class="row">
+    <div class="cell" style="margin-left:8px; border:none;padding-right:0px"><span style="color:Red; font-weight:bold;">Hotline:<br/>&nbsp;</span></div>
+    <div class="cell"><strong>0918 888 515</strong><br/><strong class="text-bottom">0988 186 689</strong></div>
+    <div class="cell"><a href="ymsgr:sendIM?matkinh1001" style="margin-top:2px">
+        <img border="0"  src="http://opi.yahoo.com/online?u=matkinh1001&m=g&t=1" alt="Yahoo chat" title="matkinh1001" width="70px">
+        </a>
+        <a href="ymsgr:sendIM?raybanxachtay" style="margin-top:2px">
+        <img border="0"  src="http://opi.yahoo.com/online?u=raybanxachtay&m=g&t=1" alt="Yahoo chat" title="raybanxachtay" width="70px">
+        </a>
+    </div>
+        <div class="cell"><strong>Mắt kính 1001</strong><br/>322/2 Bis Trần Hưng Đạo, Q1, Tp.Hồ Chí Minh
+        
+        </div>
+   <div class="cell" style="border:none;margin-top:5px"><uc3:online ID="online1" runat="server" /></div>
+         <div class="cell" style="float:right; border:none; margin-right:-15px">
+         
+          <div   style="position:relative">
+  
+     <div style="position:absolute; right:75px; top:5px">
+<iframe src="//www.facebook.com/plugins/like.php?href=http://matkinh1001.com&amp;send=true&amp;layout=button_count&amp;width=150&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:150px; height:21px;" allowTransparency="true"></iframe>
+</div>     
+              
+<image src="images/graphics/visa-master.png" alt=""   ></image>
+
+    </div>
+         
+     </div>
+    </div>
+
+     <div class="row">
+     <div class="cell copyright" >&copy; Copyright 2012 [1001 store] , All Rights Reserved</div>
+
+    </div>
+    </footer>
+  </div>
+
+  <uc1:product_menu ID="product_menu1" runat="server" />
+  <uc2:product_menu2 ID="product_menu2" runat="server" />
+
+</div>
+<!-- addon -->
+<!-- /container -->
+<!-- Le javascript
+    ================================================== -->
+
+
+<script>
+
+    $(".menu-hover").hover(
+
+	function () { }, function () { $("#menu-show1, #menu-show2").hide(); }
+
+);
+
+    $(".menu-hover").click(
+
+	function () { }, function () { $("#menu-show1, #menu-show2").hide(); }
+
+);
+
+    $("#menu1").hover(
+
+	function () { $("#menu-show2").fadeOut(300); $("#menu-show1").fadeIn(300); $(".arrow").css("left", "450px"); $("#menu-show2").hide(); }
+);
+
+    $("#menu2").hover(
+
+	function () { $("#menu-show1").fadeOut(300); $("#menu-show2").fadeIn(300); $(".arrow").css("left", "600px"); $("#menu-show1").hide(); }
+);
+
+    $('#myTab a').click(function (e) {
+        e.preventDefault();
+        $(this).tab('show');
+    })
+
+
+
+    $('.carousel').carousel({
+        interval: 3000
+    })
+
+    
+</script>
+
+
+    </form>
+</body>
+</html>

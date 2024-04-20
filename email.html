@@ -1,0 +1,59 @@
+﻿<body style="background:#FFF; font-family:Verdana, Arial, Helvetica, sans-serif; font-size:10px; margin:0; padding:0;">
+<div style="background:#FFF; font-family:Verdana, Arial, Helvetica, sans-serif; font-size:10px; margin:0; padding:0;width:600px;max-width:600px;">
+    <div style="background:url('http://www.bigislandcandies.com/skin/frontend/bic/default/images/bic_stripe.jpg');background-repeat:repeat-x;min-height:16px;min-width:690px;width:690px;"></div>
+    <table cellspacing="0" cellpadding="0" border="0" style="height:100%;margin: 0;max-width:600px;width:600px;display:block;">
+        <tr>
+            <td align="center" valign="top" style="padding:20px 0 20px 0">
+                <!-- [ header starts here] -->
+                <table bgcolor="#FFFFFF" cellspacing="0" cellpadding="10" border="0" style="max-width:600px;width:600px;">
+                    <tr>
+                        <td valign="top" style="text-align:center;">
+                            <a href="{{store url=""}}"><img src="http://www.bigislandcandies.com/skin/frontend/bic/default/images/welcome_banner.png" alt="{{var logo_alt}}" style="margin-bottom:10px;" border="0"/></a></td>
+                    </tr>
+                    <!-- [ middle starts here] -->
+                    <tr>
+                        <td valign="top">
+                            {{if $customer.name != ''}}
+                            <h1 style="font-size:10px; font-weight:normal; line-height:22px; margin:0 0 11px 0;"">Dear {{htmlescape var=$customer.name}},</h1>
+                            {{/if}}
+                            <p style="font-size:10px; line-height:16px; margin:0 0 16px 0;">Welcome to {{var store.getFrontendName()}}. To log in when visiting our site just click <a href="{{store url="customer/account/"}}" style="color:#1E7EC8;">Login</a> or <a href="{{store url="customer/account/"}}" style="color:#1E7EC8;">My Account</a> at the top of every page, and then enter your e-mail address and password.</p>
+                            <p style="border:1px solid #E0E0E0; font-size:10px; line-height:16px; margin:0; padding:13px 18px; background:#f9f9f9;">
+                                Use the following values when prompted to log in:<br/>
+                                <strong>E-mail</strong>: {{var customer.email}}<br/>
+                                {{depend coupon}}
+                            <p>Feel free to use this coupon: {{var coupon}}</p>
+                            <p>Please note that it expires in {{var coupon_days}} day(s)</p>
+                            {{/depend}}
+                            <p style="font-size:10px; line-height:16px; margin:0 0 8px 0;">When you log in to your account, you will be able to do the following:</p>
+                            <ul style="font-size:10px; line-height:16px; margin:0 0 16px 0; padding:0;">
+                                <li style="list-style:none inside; padding:0 0 0 10px;">&ndash; Proceed through checkout faster when making a purchase</li>
+                                <li style="list-style:none inside; padding:0 0 0 10px;">&ndash; Check the status of orders</li>
+                                <li style="list-style:none inside; padding:0 0 0 10px;">&ndash; View past orders</li>
+                                <li style="list-style:none inside; padding:0 0 0 10px;">&ndash; Make changes to your account information</li>
+                                <li style="list-style:none inside; padding:0 0 0 10px;">&ndash; Change your password</li>
+                                <li style="list-style:none inside; padding:0 0 0 10px;">&ndash; Store alternative addresses (for shipping to multiple family members and friends!)</li>
+                            </ul>
+                            <p style="font-size:10px; line-height:16px; margin:0;">If you have any questions about your account or any other matter, please feel free to contact us at <a href="mailto:{{config path='trans_email/ident_support/email'}}" style="color:#1E7EC8;">{{config path='trans_email/ident_support/email'}}</a> or by phone at {{config path='general/store_information/phone'}}.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td bgcolor="#EAEAEA" align="center" style="background:#EAEAEA; text-align:center;"><center><p style="font-size:10px; margin:0;">Thank you again, <strong>{{var store.getFrontendName()}}</strong></p></center></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+</div>
+
+
+
+
+
+
+
+
+
+</body>
+Forix Account Email Updates
+
+Welcome to {{var store.getFrontendName()}}, {{var customer.name}}!
